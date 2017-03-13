@@ -1,0 +1,38 @@
+$white: #FFF;
+$green: #006400;
+$dark-green: darken($green, 15);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  background: $white;
+}
+
+.table {
+  thead {
+    tr {
+      th {
+        border-color: $dark-green;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        border-color: $dark-green;
+        color: $dark-green;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: transparentize($green, 0.9);
+        vertical-align: middle !important;
+      }
+    }
+  }
+}
+
+.table-header {
+  th {
+    background-color: $green;
+    color: $white;
+  }
+}
