@@ -1,11 +1,48 @@
-$white: #FFF;
+$white: #F5F5F5;
+$dark-white: #ACA;
 $green: #006400;
-$dark-green: darken($green, 15);
+$dark-green: darken($green, 5);
+$light-green: lighten($green, 5);
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
   background: $white;
+}
+
+.page-heading {
+  width: 100%;
+  border-bottom: 5px solid $dark-green;
+  margin-bottom: 5px;
+  color: $dark-green;
+}
+
+.header-button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: $green;
+  color: $white !important;
+
+  &:hover {
+    background-color: $light-green;
+  }
+}
+
+.page-footer {
+  width: 100%;
+  border-top: 5px solid $dark-green;
+  margin-top: 5px;
+  padding-top: 5px;
+  color: $dark-green;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .table {
@@ -34,5 +71,45 @@ body {
   th {
     background-color: $green;
     color: $white;
+  }
+}
+
+.active-col {
+  background-color: $dark-green !important;
+}
+
+.inactive-col{
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $light-green !important;
+  }
+}
+
+.loading-container {
+  display:flex;
+  width: 100%;
+  justify-content: center;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg) scale(1.0);
+    }
+    50% {
+      transform: rotate(180deg) scale(0.85);
+    }
+    100% {
+      transform: rotate(360deg) scale(1.0);
+    }
+  }
+
+  .loading-indicator {
+    height: 50px;
+    width: 50px;
+    border: 10px solid $green;
+    border-radius: 100%;
+    border-top-color: $dark-white;
+    animation: spin 1.2s linear infinite;
   }
 }

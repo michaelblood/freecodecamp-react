@@ -15,18 +15,31 @@ const renderRows = (campers) => {
   ))
 };
 
-const Table = ({ campers }) => {
+const Table = ({ campers, currentFilter, onClick }) => {
+  const total = currentFilter === 'alltime' ? 'active-col' : 'inactive-col';
+  const recent = currentFilter === 'recent' ? 'active-col' : 'inactive-col';
+
   return (
     <div className="container">
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 table-responsive">
           <table className="table table-striped table-bordered">
             <thead>
               <tr className="table-header">
                 <th>Rank</th>
                 <th>User</th>
-                <th>Total points</th>
-                <th>Recent points</th>
+                <th
+                  className={total}
+                  onClick={total === 'active-col' ? null : () => onClick()}
+                >
+                  Total points
+                </th>
+                <th
+                  className={recent}
+                  onClick={recent === 'active-col' ? null : () => onClick()}
+                >
+                  Recent points
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -41,6 +54,8 @@ const Table = ({ campers }) => {
 
 Table.propTypes = {
   campers: PropTypes.arrayOf(PropTypes.object),
+  currentFilter: PropTypes.oneOf(['alltime', 'recent']),
+  onClick: PropTypes.func,
 };
 
 export default Table;

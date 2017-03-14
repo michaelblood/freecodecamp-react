@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PageHeading  from './PageHeading';
 import Table        from './Table';
 import PageFooter   from './PageFooter';
+import Loading from './Loading';
 
 const API_URL = 'https://fcctop100.herokuapp.com/api/fccusers/top';
 
@@ -52,7 +53,7 @@ class App extends Component {
   }
 
   render() {
-    const { filter, other, campers } = this.state;
+    const { filter, other, campers, fetching, } = this.state;
 
     return (
       <div>
@@ -61,7 +62,13 @@ class App extends Component {
           currentFilter={filter}
           otherFilter={other}
         />
-        <Table campers={campers[filter]} />
+        {fetching ?
+          <Loading /> :
+          <Table
+            campers={campers[filter]}
+            currentFilter={filter}
+            onClick={() => this.changeFilter()}
+          /> }
         <PageFooter />
       </div>
     );
