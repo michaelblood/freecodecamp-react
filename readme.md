@@ -4,8 +4,8 @@ This is a repo containing my implementations of each of the React Projects for f
 
 Project | Status | Demo
 --- | :---: | ---
-Markdown Previewer | ~~complete~~ | -
-freeCodeCamp Leaderboard | **in progress** | -
-Recipe Box | *todo* | -
+Markdown Previewer | ~~&nbsp;complete&nbsp;~~ | -
+freeCodeCamp Leaderboard | ~~&nbsp;complete&nbsp;~~ | -
+Recipe Box | **in progress** | -
 Conway's Game of Life | *todo* | -
 Roguelike Dungeon Crawler | *todo* | -
