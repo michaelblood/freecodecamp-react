@@ -1,0 +1,48 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+$white: #f5f5f5;
+$light-grey: #cfd8dc;
+$blue-grey: #546e7a;
+$dark-grey: #263238;
+
+body {
+  background: $white;
+}
+
+.recipe-list {
+  // set background to $dark-grey and convert list into nested cards
+  h1 {
+    
+  }
+  &-item {
+    background-color: $blue-grey;
+    color: $white;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $dark-grey;
+      cursor: pointer;
+    }
+
+    h3 {
+      background: transparent;
+      color: inherit;
+    }
+  }
+}
+
+.no-recipe {
+  margin-top: calc(50vh - 100px);
+  text-align: center;
+  color: transparentize($blue-grey, 0.9);
+  font-weight: 900;
+  text-shadow: 1px 1px 2px $white, 0 0 0 transparentize($dark-grey, 0.7), 1px 1px 2px $white;
+  user-select: none;
+
+  h1 {
+    font-size: 70px;
+    &:hover {
+      cursor: default;
+    }
+  }
+}
