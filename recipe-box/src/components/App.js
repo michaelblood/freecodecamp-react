@@ -37,6 +37,7 @@ class App extends Component {
       this.setState({ recipeList: recipes });
     }
     if (!recipes || recipes.length === 0) {
+      localStorage.setItem('mb_recipes', JSON.stringify(defaultRecipes));
       this.setState({ recipeList: defaultRecipes });
     }
   }
@@ -48,9 +49,10 @@ class App extends Component {
       id: '' + Date.now() + title,
     };
     this.setState(prevState => ({
-      recipeList: [ ...prevState.recipes, recipe ]
+      recipeList: prevState.recipeList.concat([ recipe ]),
+      editing: false,
     }), () => {
-      localStorage.setItem('mb_recipes', JSON.stringify(this.state.recipes));
+      localStorage.setItem('mb_recipes', JSON.stringify(this.state.recipeList));
     });
   }
 
@@ -63,21 +65,43 @@ class App extends Component {
     }
   }
 
+  deleteRecipe(id) {
+    const recipeList = this.state.recipeList.slice();
+    for (let i = 0; i < recipeList.length; i++) {
+      if (recipeList[i].id === id) {
+        const newArr = recipeList.slice(0, i).concat(recipeList.slice(i+1));
+        this.setState({
+          recipeList: newArr,
+        }, () => {
+          localStorage.setItem("mb_recipes", JSON.stringify(this.state.recipeList));
+        });
+        return;
+      }
+    }
+  }
+
   render() {
     return (
       <div>
-        <h1>react app thing</h1>
+        <div className="page-heading">
+          <h1 className="py-3 mb-3 text-center">Recipe box</h1>
+        </div>
         <div className="container">
           <div className="row">
             <RecipeList
               recipes={this.state.recipeList}
               onClick={(id) => this.viewRecipe(id)}
+              onDelete={(id) => this.deleteRecipe(id)}
+              startEditing={() => this.setState({editing: true})}
             />
             <RecipeView recipe={this.state.current}/>
           </div>
         </div>
         {this.state.editing && 
-        <CreateRecipe onSubmit={(t, i) => this.newRecipe(t, i)}/>}
+        <CreateRecipe 
+          onSubmit={(t, i) => this.newRecipe(t, i)}
+          onExit={() => this.setState({editing: false})}
+        />}
       </div>
     )
   }

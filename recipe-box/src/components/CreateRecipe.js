@@ -8,14 +8,19 @@ class CreateRecipe extends Component {
   handleSubmit() {
     const title = this.title.value;
     const ingredients = this.ingredients.value;
-
     this.props.onSubmit(title, ingredients);
   }
 
   render() {
     return (
-      <div className="modal-background">
-        <div className="modal-content">
+      <div className="modal-background" onClick={() => this.props.onExit()}>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <span
+            className="exit-btn"
+            onClick={() => this.props.onExit()}
+          >
+            &times;
+          </span>
           <input
             className="input"
             ref={node => { this.title = node }}
@@ -42,6 +47,7 @@ class CreateRecipe extends Component {
 
 CreateRecipe.propTypes = {
   onSubmit: PropTypes.func,
+  onExit: PropTypes.func,
 };
 
 export default CreateRecipe;

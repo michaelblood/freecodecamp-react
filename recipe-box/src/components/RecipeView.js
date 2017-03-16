@@ -8,13 +8,18 @@ const RecipeView = ({ recipe }) => {
       </div>
     )
   }
-  const { title, ingredients } = recipe;
+  const { title, ingredients, id } = recipe;
   return (
-    <div className="recipe-view col-md-6 col-sm-12">
-      <div className="card">
-        <h1 className="card-header">{title}</h1>
+    <div className="col-md-6 col-sm-12">
+      <h2 className="text-center">{title}</h2>
+      <hr/>
+      <div className="card recipe-view">
         <div className="card-block">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni omnis fugiat beatae, repellendus odit facere perferendis animi adipisci accusantium sint rerum tempora quo possimus sunt repellat, porro itaque maxime eaque.</p>
+          <ul className="list-group">
+            {ingredients.split(',').map(ing => (
+              <li key={id + ing} className="list-group-item my-1">{ing}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
