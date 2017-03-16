@@ -14,31 +14,47 @@ class CreateRecipe extends Component {
   render() {
     return (
       <div className="modal-background" onClick={() => this.props.onExit()}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <span
-            className="exit-btn"
-            onClick={() => this.props.onExit()}
-          >
-            &times;
-          </span>
-          <input
-            className="input"
-            ref={node => { this.title = node }}
-            type="text"
-            placeholder="recipe title"
-          />
-          <input
-            className="input"
-            ref={node => { this.ingredients = node }}
-            type="text"
-            placeholder="recipe,ingredients,separated,by,commas"
-          />
-          <button
-            className="btn btn-secondary"
-            onClick={() => this.handleSubmit()}
-          >
-            Submit
-          </button>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 offset-md-3 col-12 my-5">
+              <div className="modal-content card" onClick={(e) => e.stopPropagation()}>
+                <span
+                  role="button"
+                  className="exit-btn btn btn-secondary"
+                  onClick={() => this.props.onExit()}
+                >
+                  &times;
+                </span>
+                <h2 className="modal-header">New recipe</h2>
+                <div className="card-block">
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      ref={node => { this.title = node }}
+                      type="text"
+                      placeholder="recipe title"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      ref={node => { this.ingredients = node }}
+                      type="text"
+                      placeholder="recipe,ingredients,separated,by,commas"
+                    />
+                  </div>
+                  <button
+                    role="button"
+                    className="btn btn-block btn-secondary submit-btn"
+                    onClick={() => this.handleSubmit()}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     );

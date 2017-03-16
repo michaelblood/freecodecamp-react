@@ -6,6 +6,6 @@ Project | Status | Demo
 --- | :---: | ---
 Markdown Previewer | ~~&nbsp;complete&nbsp;~~ | -
 freeCodeCamp Leaderboard | ~~&nbsp;complete&nbsp;~~ | -
-Recipe Box | **in progress** | -
-Conway's Game of Life | *todo* | -
+Recipe Box | ~~&nbsp;complete&nbsp;~~ | -
+Conway's Game of Life | **in progress** | -
 Roguelike Dungeon Crawler | *todo* | -
