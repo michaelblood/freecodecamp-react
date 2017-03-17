@@ -1,0 +1,28 @@
+$black: #000;
+$blue-grey: #88A;
+
+
+.board {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+@mixin cell {
+  border: 1px solid $black;
+  width: 25px;
+  height: 25px;
+}
+
+.alive {
+  @include cell;
+  background-color: $blue-grey;
+}
+
+.dead {
+  @include cell;
+  background-color: transparent;
+}
