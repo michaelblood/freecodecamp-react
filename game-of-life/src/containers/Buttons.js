@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import * as actions from '../actions';
 
-const Button = ({ handler, disabled, text }) => (
+const Button = ({ onClick, disabled, text }) => (
   <button
     className={"button " + text}
     disabled={disabled}
-    onClick={handler}
+    onClick={onClick}
   >
     {text}
   </button>
@@ -20,13 +20,14 @@ const Buttons = ({
   onRandom,
   running,
   size,
+  delay,
 }) => {
   return (
     <div className="button-group">
-      <Button disabled={running} handler={onStart} text="Start" />{' '}
-      <Button disabled={!running} handler={onPause} text="Pause" />{' '}
-      <Button disabled={running} handler={() => onRandom(size.w, size.h)} text="Randomize" />{' '}
-      <Button disabled={running} handler={onNext} text="Next" />
+      <Button disabled={running} onClick={() => onStart(delay)} text="Start" />{' '}
+      <Button disabled={!running} onClick={onPause} text="Pause" />{' '}
+      <Button disabled={running} onClick={() => onRandom(size.w, size.h)} text="Randomize" />{' '}
+      <Button disabled={running} onClick={onNext} text="Next" />
     </div>
   );
 };
@@ -43,18 +44,18 @@ Buttons.propTypes = {
 const mapStateToProps = (state) => ({
   running: state.running,
   size: state.size,
-  delay: state.delay,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   let frame;
+  let timeout;
 
   const tick = (time) => {
     dispatch({ type: 'NEXT_STATE' });
-    setTimeout(() => {
+    timeout = setTimeout(() => {
       frame = requestAnimationFrame(tick);
-    }, delay);
-  } /* FIGURE OUT HOW TO GET STATE DELAY */
+    }, ownProps.delay);
+  };
 
   return {
     onNext() {
@@ -67,6 +68,7 @@ const mapDispatchToProps = (dispatch) => {
     onPause() {
       dispatch(actions.pause());
       cancelAnimationFrame(frame);
+      clearTimeout(timeout);
     },
     onRandom(w, h) {
       dispatch(actions.randomize(w, h));
@@ -78,3 +80,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Buttons);
+
+export { Button };

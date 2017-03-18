@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { nextState, defaultGrid } from '../helpers';
+import { SPEEDS } from '../constants';
 
 const DEFAULT_GRID = defaultGrid();
 
@@ -15,7 +16,7 @@ const running = (state = false, action) => {
   }
 };
 
-const delay = (state = 100, action) => {
+const delay = (state = SPEEDS.MEDIUM, action) => {
   switch (action.type) {
     case 'SET_SPEED':
       return action.speed;
