@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Grid } from '../components';
 
-import { toggleCell } from '../actions';
+import * as actions from '../actions';
 
 const mapStateToProps = (state, ownProps) => ({
   cells: state.cells,
@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onCellClick(id) {
-    dispatch(toggleCell(id))
+    dispatch(actions.toggleCell(id))
   },
 });
 

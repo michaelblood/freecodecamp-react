@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react';
 
-const Cell = ({ alive, onClick }) => {
+const Cell = ({ alive, onClick, newborn }) => {
   return (
     <div
-      className={alive ? "alive" : "dead"}
-      onClick={() => onClick()}
-      style={{
-        width: '25px',
-        height: '25px',
-        margin: '0px',
+      className={(alive ? 'alive' : 'dead') + (newborn ? ' newborn' : '')}
+      onClick={(e) => {
+        onClick();
       }}
     />
   );
@@ -17,6 +14,7 @@ const Cell = ({ alive, onClick }) => {
 Cell.propTypes = {
   onClick: PropTypes.func,
   alive: PropTypes.bool,
+  newborn: PropTypes.bool,
 };
 
 export default Cell;

@@ -1,10 +1,29 @@
 $black: #000;
 $blue-grey: #88A;
+$light-grey: #eee;
 
+body {
+  user-select: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.menu {
+  height: 20%;
+  text-align: center;
+}
 
 .board {
   display: flex;
   flex-direction: column;
+  width: 80%;
+  height: auto;
 }
 
 .row {
@@ -12,9 +31,15 @@ $blue-grey: #88A;
 }
 
 @mixin cell {
-  border: 1px solid $black;
-  width: 25px;
-  height: 25px;
+  border: 1px solid $light-grey;
+  margin: 0px;
+  flex: 1 1 auto;
+
+  &:before {
+    padding-top: 100%;
+    content: '';
+    float: left;
+  }
 }
 
 .alive {
@@ -22,7 +47,48 @@ $blue-grey: #88A;
   background-color: $blue-grey;
 }
 
+.newborn {
+  background-color: lighten($blue-grey, 10);
+}
+
 .dead {
   @include cell;
   background-color: transparent;
+}
+
+.input {
+  width: 3.5em;
+}
+
+.options {
+  width: 100%;
+}
+
+.button-group {
+  width: 100%;
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: center;
+
+}
+
+.button {
+  border: solid 1px $blue-grey;
+  background-color: $blue-grey;
+  color: #fff;
+  margin: 2px;
+  transition: color 0.3s, background-color 0.3s;
+
+  &:hover {
+    background-color: darken($blue-grey, 10);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: $light-grey;
+    color: black;
+    border-color: rgba(0,0,0,0.5);
+    cursor: default;
+  }
 }

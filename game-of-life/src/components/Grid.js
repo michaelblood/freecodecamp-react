@@ -2,9 +2,12 @@ import React, { PropTypes } from 'react';
 
 import Cell from './Cell';
 
-const Grid = ({ cells, onCellClick }) => {
+const Grid = ({
+  cells,
+  onCellClick,
+}) => {
   return (
-    <div className="board">
+    <div className="board"> 
       {cells.map((row, i) => {
         return (
           <div key={i} className="row">
