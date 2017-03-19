@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import { Board, } from './containers';
-import { BoardControls, SpeedControls, Generation, Configure } from './components';
+import { BoardControls, SpeedControls, Generation, Configure, } from './components';
 import * as actions from './actions';
 
 class App extends Component {

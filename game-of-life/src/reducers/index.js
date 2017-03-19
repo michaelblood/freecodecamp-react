@@ -16,7 +16,7 @@ const running = (state = false, action) => {
   }
 };
 
-const delay = (state = SPEEDS.MEDIUM, action) => {
+const delay = (state = SPEEDS.FAST, action) => {
   switch (action.type) {
     case 'SET_DELAY':
       return action.delay;
@@ -32,6 +32,15 @@ const size = (state = { w: DEFAULT_W, h: DEFAULT_H }, action) => {
       const h = grid.length;
       const w = grid[0].length;
       return { w, h };
+    default:
+      return state;
+  }
+};
+
+const scale = (state = 100, action) => {
+  switch (action.type) {
+    case 'SET_SCALE':
+      return action.scale;
     default:
       return state;
   }
@@ -87,4 +96,5 @@ export default combineReducers({
   generation,
   size,
   delay,
+  scale,
 });

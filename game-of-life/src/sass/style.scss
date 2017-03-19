@@ -10,17 +10,26 @@ body {
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 800px) {
     flex-direction: row;
   }
   justify-content: space-between;
   align-items: center;
   height: 100%;
+
+  &:after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+  }
 }
 
 .menu {
-  width: 50%;
-  @media screen and (min-width: 600px) {
+  width: 100%;
+  @media screen and (min-width: 800px) {
+    align-self: flex-start;
     width: 50%;
   }
   height: 20%;
@@ -31,7 +40,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 800px) {
+    align-self: flex-start;
     width: 50%;
   }
   height: auto;
