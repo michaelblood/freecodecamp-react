@@ -32,14 +32,13 @@ const Configure = ({ size, onSubmit }) => {
       <button
         className="button"
         onClick={() => {
-          onSubmit(Number(width.value || size.w), Number(height.value || size.h));
+          onSubmit({ w: Number(width.value || size.w), h: Number(height.value || size.h) });
           width.value = '';
           height.value = '';
         }}
       >
         Update size
       </button>
-      <hr/>
     </div>
   );
 };
@@ -49,18 +48,4 @@ Configure.propTypes = {
   size: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  size: state.size,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(w, h) {
-    dispatch(actions.setSize(w, h));
-  },
-});
-
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Configure);
+export default Configure;

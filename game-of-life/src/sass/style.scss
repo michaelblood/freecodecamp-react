@@ -9,12 +9,20 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+  }
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
 
 .menu {
+  width: 50%;
+  @media screen and (min-width: 600px) {
+    width: 50%;
+  }
   height: 20%;
   text-align: center;
 }
@@ -22,8 +30,13 @@ body {
 .board {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
+  @media screen and (min-width: 600px) {
+    width: 50%;
+  }
   height: auto;
+  max-height: 100%;
+  clear: left;
 }
 
 .row {
@@ -44,11 +57,15 @@ body {
 
 .alive {
   @include cell;
-  background-color: $blue-grey;
+  background-color: darken($blue-grey, 20);
 }
 
 .newborn {
-  background-color: lighten($blue-grey, 10);
+  background-color: lighten($blue-grey, 20);
+}
+
+.teen {
+  background-color: $blue-grey;
 }
 
 .dead {

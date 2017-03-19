@@ -1,5 +1,4 @@
-import { defaultGrid } from '../helpers';
-import { SPEEDS } from '../constants';
+import { defaultGrid, createBlankGrid } from '../helpers';
 
 export const toggleCell = (id) => ({
   type: 'TOGGLE_CELL',
@@ -10,39 +9,42 @@ export const next = () => ({
   type: 'NEXT_STATE',
 });
 
-export const start = () => ({
-  type: 'START_GAME',
-});
+export const start = () => {
+  return {
+    type: 'START_GAME',
+  };
+};
 
-export const pause = () => ({
-  type: 'PAUSE_GAME',
-});
+export const pause = () => {
+  return {
+    type: 'PAUSE_GAME',
+  };
+}
 
-export const randomize = (w, h) => ({
+export const randomize = ({ w, h }) => ({
   type: 'RANDOMIZE',
   grid: defaultGrid(w, h)
 });
 
-export const setSize = (w, h) => ({
+export const setSize = ({ w, h }) => ({
   type: 'SET_SIZE',
   grid: defaultGrid(w, h)
 });
 
+export const clearGrid = ({ w, h }) => ({
+  type: 'CLEAR_GRID',
+  grid: createBlankGrid(w, h)
+});
+
 export const setSpeed = (speed) => {
-  let n;
-  switch (speed) {
-    case 'SLOW':
-      n = SPEEDS.SLOW;
-      break;
-    case 'FAST':
-      n = SPEEDS.FAST;
-      break;
-    case 'MEDIUM':
-    default:
-      n = SPEEDS.MEDIUM;
-  }
   return {
-    type: 'SET_SPEED',
-    speed: n,
+    type: 'SET_DELAY',
+    delay: speed,
   };
 };
+
+export const tick = ({ frame, timeout }) => ({
+  type: 'TICK',
+  timeout,
+  frame
+});

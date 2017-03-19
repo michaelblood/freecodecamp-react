@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { nextState, defaultGrid } from '../helpers';
-import { SPEEDS } from '../constants';
+import { SPEEDS, DEFAULT_W, DEFAULT_H } from '../constants';
 
 const DEFAULT_GRID = defaultGrid();
 
@@ -18,14 +18,14 @@ const running = (state = false, action) => {
 
 const delay = (state = SPEEDS.MEDIUM, action) => {
   switch (action.type) {
-    case 'SET_SPEED':
-      return action.speed;
+    case 'SET_DELAY':
+      return action.delay;
     default:
       return state;
   }
 };
 
-const size = (state = {w: 60, h: 30}, action) => {
+const size = (state = { w: DEFAULT_W, h: DEFAULT_H }, action) => {
   switch (action.type) {
     case 'SET_SIZE':
       const grid = action.grid;
@@ -66,6 +66,7 @@ const cells = (state = DEFAULT_GRID, action) => {
       return nextState(state);
     case 'RANDOMIZE':
     case 'SET_SIZE':
+    case 'CLEAR_GRID':
       return action.grid;
     default:
       return state;

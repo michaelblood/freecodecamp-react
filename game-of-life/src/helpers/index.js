@@ -1,5 +1,4 @@
-const DEFAULT_W = 60;
-const DEFAULT_H = 30;
+import { DEFAULT_W, DEFAULT_H } from '../constants';
 
 const inBounds = (size) => (n) => {
   if (n === size) return 0;
@@ -49,4 +48,9 @@ export const defaultGrid = (width = DEFAULT_W, height = DEFAULT_H) => {
 
   const grid = Array(height).fill(false).map(() => row(width));
   return grid;
+};
+
+export const createBlankGrid = (width, height) => {
+  const row = () => Array(width).fill(false);
+  return Array(height).fill(row());
 };
