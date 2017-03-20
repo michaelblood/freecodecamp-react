@@ -7,5 +7,5 @@ Project | Status | Demo
 Markdown Previewer | ~~&nbsp;complete&nbsp;~~ | -
 freeCodeCamp Leaderboard | ~~&nbsp;complete&nbsp;~~ | -
 Recipe Box | ~~&nbsp;complete&nbsp;~~ | -
-Conway's Game of Life | ~~&nbsp;complete&nbsp;~~ | -
+Conway's Game of Life | ~~&nbsp;complete&nbsp;~~ | [on Surge](http://astonishing-vest.surge.sh)
 Roguelike Dungeon Crawler | **in progress** | -
