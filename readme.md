@@ -7,5 +7,5 @@ Project | Status | Demo
 Markdown Previewer | ~~&nbsp;complete&nbsp;~~ | -
 freeCodeCamp Leaderboard | ~~&nbsp;complete&nbsp;~~ | -
 Recipe Box | ~~&nbsp;complete&nbsp;~~ | -
-Conway's Game of Life | **in progress** | -
-Roguelike Dungeon Crawler | *todo* | -
+Conway's Game of Life | ~~&nbsp;complete&nbsp;~~ | -
+Roguelike Dungeon Crawler | **in progress** | -
